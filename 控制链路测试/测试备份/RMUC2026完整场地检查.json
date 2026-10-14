@@ -1,0 +1,192 @@
+{
+  "level": "/Game/RMUC2026Full/Maps/RMUC2026_Full_Field",
+  "actor_count": 2836,
+  "actors_with_nonzero_bounds": 2144,
+  "static_mesh_component_collision_modes": {
+    "<CollisionEnabled.QUERY_AND_PHYSICS: 3>": 2144
+  },
+  "static_mesh_component_collision_profiles": {
+    "BlockAll": 2144
+  },
+  "world_bounds_cm": {
+    "min": {
+      "x": -1450.5003662109375,
+      "y": -637.72216796875,
+      "z": -194.13487243652344
+    },
+    "max": {
+      "x": 1450.4989013671875,
+      "y": 962.5909423828125,
+      "z": 168.98847198486328
+    }
+  },
+  "keyword_candidates": [
+    {
+      "label": "RMUC_HANGAR_PLAYER_START_CANDIDATE",
+      "name": "RMUC_HANGAR_PLAYER_START_CANDIDATE",
+      "class": "PlayerStart",
+      "location_cm": {
+        "x": 102.680908203125,
+        "y": 61.20184326171875,
+        "z": 71.65065002441406
+      },
+      "bounds_origin_cm": {
+        "x": 202.680908203125,
+        "y": 61.20184326171875,
+        "z": 71.65065002441406
+      },
+      "bounds_extent_cm": {
+        "x": 140.0,
+        "y": 80.0,
+        "z": 92.0
+      }
+    },
+    {
+      "label": "RMUC_HANGAR_CANDIDATE_MARKER",
+      "name": "RMUC_HANGAR_CANDIDATE_MARKER",
+      "class": "StaticMeshActor",
+      "location_cm": {
+        "x": 102.680908203125,
+        "y": 61.20184326171875,
+        "z": 71.65065002441406
+      },
+      "bounds_origin_cm": {
+        "x": 102.680908203125,
+        "y": 61.20184326171875,
+        "z": 71.65065002441406
+      },
+      "bounds_extent_cm": {
+        "x": 6.0,
+        "y": 6.0,
+        "z": 50.0
+      }
+    },
+    {
+      "label": "机场_PRT",
+      "name": "机场_PRT",
+      "class": "Actor",
+      "location_cm": {
+        "x": 129.5247802734375,
+        "y": 62.968544006347656,
+        "z": -122.67333984375
+      },
+      "ancestor_labels": [
+        "RMUC2026-1_ASM",
+        "rmuc2026-1",
+        "FromFiles3306615D46F52773C66D3ABAF84233C7"
+      ],
+      "bounds_origin_cm": {
+        "x": 129.5247802734375,
+        "y": 62.968544006347656,
+        "z": -122.67333984375
+      },
+      "bounds_extent_cm": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    }
+  ],
+  "hangar_descendants": [
+    {
+      "label": "body_1_659",
+      "name": "body_1_659",
+      "class": "StaticMeshActor",
+      "location_cm": {
+        "x": 129.5247802734375,
+        "y": 62.968544006347656,
+        "z": -122.67333984375
+      },
+      "ancestor_labels": [
+        "机场_PRT",
+        "RMUC2026-1_ASM",
+        "rmuc2026-1",
+        "FromFiles3306615D46F52773C66D3ABAF84233C7"
+      ],
+      "bounds_origin_cm": {
+        "x": 102.680908203125,
+        "y": 61.20184326171875,
+        "z": -63.030357360839844
+      },
+      "bounds_extent_cm": {
+        "x": 29.705490112304688,
+        "y": 29.755577087402344,
+        "z": 59.681007385253906
+      }
+    }
+  ],
+  "special_markers": [
+    {
+      "label": "RMUC_DirectionalLight",
+      "location_cm": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1000.0
+      }
+    },
+    {
+      "label": "RMUC_SkyLight",
+      "location_cm": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 500.0
+      }
+    },
+    {
+      "label": "RMUC_SkyAtmosphere",
+      "location_cm": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    {
+      "label": "RMUC_TEMP_SAFETY_FLOOR_Z0",
+      "location_cm": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -25.0
+      }
+    },
+    {
+      "label": "RMUC_ORIGIN_Z0",
+      "location_cm": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 25.0
+      }
+    },
+    {
+      "label": "RMUC_POSITIVE_X_AXIS",
+      "location_cm": {
+        "x": 250.0,
+        "y": 0.0,
+        "z": 10.0
+      }
+    },
+    {
+      "label": "RMUC_POSITIVE_Y_AXIS",
+      "location_cm": {
+        "x": 0.0,
+        "y": 250.0,
+        "z": 10.0
+      }
+    },
+    {
+      "label": "RMUC_HANGAR_PLAYER_START_CANDIDATE",
+      "location_cm": {
+        "x": 102.680908203125,
+        "y": 61.20184326171875,
+        "z": 71.65065002441406
+      }
+    },
+    {
+      "label": "RMUC_HANGAR_CANDIDATE_MARKER",
+      "location_cm": {
+        "x": 102.680908203125,
+        "y": 61.20184326171875,
+        "z": 71.65065002441406
+      }
+    }
+  ]
+}

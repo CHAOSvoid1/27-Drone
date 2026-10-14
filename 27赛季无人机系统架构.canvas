@@ -1,0 +1,27 @@
+{
+	"nodes":[
+		{"id":"lichee","type":"text","text":"## LicheeRV Nano（SG2002）\nNPU：轻量目标检测\nCPU：目标跟踪、避障判断、导航状态机\n输出：速度目标 vx/vy/vz、偏航角速度\n不承担姿态与电机闭环","x":310,"y":-375,"width":370,"height":220,"color":"4"},
+		{"id":"front_range","type":"text","text":"## TFS20-L 前向测距\n提供前方距离保险\n具体接入接口与数据融合方式待确认","x":-200,"y":-40,"width":310,"height":145,"color":"3"},
+		{"id":"modes","type":"text","text":"## 两种运行模式\nA. 飞控独立：手飞／定高／光流定点，用于调试\nB. 视觉自主：相机 → Lichee 决策 → PX4 Offboard\n前者验证稳定飞行后再启用后者","x":-200,"y":778,"width":430,"height":180,"color":"2"},
+		{"id":"checks","type":"text","text":"## 定型前检查\n① AIO 是否有可用 PX4 board target、至少两个完整 UART\n② GC4653 在 LicheeRV Nano BSP 中的驱动、设备树与 ISP 配置\n③ TFS20-L 接线、延迟和前向安全策略\n④ 光流无绝对位置，长期积分漂移需视觉特征校正","x":1220,"y":743,"width":690,"height":215,"color":"1"},
+		{"id":"camera","type":"text","text":"## 前视相机 GC4653\n建议原型目标：720P / 60 fps\n负责目标识别、跟踪与方向判断\n卷帘快门；高速复杂避障需实测","x":-200,"y":-375,"width":310,"height":190,"color":"3"},
+		{"id":"feedback","type":"text","text":"## 状态回传\nPX4 → LicheeRV Nano\n融合后姿态、局部位置、速度、高度、电池状态\n供导航决策使用","x":1480,"y":-375,"width":430,"height":170,"color":"4"},
+		{"id":"title","type":"text","text":"# 27赛季无人机系统框线图\n 架构草案，接口与器件兼容性需实测确认","x":560,"y":-600,"width":660,"height":120,"color":"1"},
+		{"id":"rc","type":"text","text":"## 遥控器／ELRS 接收机\n手动操控与接管；具体接口按飞控确认","x":-200,"y":560,"width":310,"height":120,"color":"2"},
+		{"id":"qgc","type":"text","text":"## Windows 电脑／QGroundControl\n刷写与配置 PX4、校准、查看传感器和日志\n调试 Stabilized → Altitude → Position\n配置 Offboard 失联保护","x":375,"y":768,"width":370,"height":190,"color":"2"},
+		{"id":"px4","type":"text","text":"## PX4 AIO 飞控\n板载 IMU＋EKF2：姿态、速度、高度估计\nOffboard：接收高层速度目标\n位置／速度／姿态／角速度闭环控制\n失联处理：退出 Offboard，按配置悬停或降落","x":745,"y":205,"width":430,"height":270,"color":"5"},
+		{"id":"flow","type":"text","text":"## MTF-02P 下视光流＋测距\n直接接飞控 UART；光流与对地高度\n不经 LicheeRV Nano 转发","x":-200,"y":260,"width":310,"height":160,"color":"3"},
+		{"id":"motor","type":"text","text":"## 4× 电机＋桨叶\n候选：1102 / 2S / 2 寸\n或 1204 / 3S / 40 mm\n按总重和推力实测定型","x":1610,"y":260,"width":300,"height":170,"color":"6"}
+	],
+	"edges":[
+		{"id":"e-camera-lichee","fromNode":"camera","fromSide":"right","toNode":"lichee","toSide":"left","label":"MIPI CSI"},
+		{"id":"e-front-lichee","fromNode":"front_range","fromSide":"right","toNode":"lichee","toSide":"bottom","label":"前向距离；接口待确认"},
+		{"id":"e-lichee-px4","fromNode":"lichee","fromSide":"right","toNode":"px4","toSide":"top","label":"MAVLink / UART · 速度目标"},
+		{"id":"e-flow-px4","fromNode":"flow","fromSide":"right","toNode":"px4","toSide":"left","label":"UART · 光流＋测距"},
+		{"id":"e-px4-feedback","fromNode":"px4","fromSide":"top","toNode":"feedback","toSide":"bottom","label":"融合状态"},
+		{"id":"e-feedback-lichee","fromNode":"feedback","fromSide":"left","toNode":"lichee","toSide":"right","label":"同一 MAVLink 链路"},
+		{"id":"e-qgc-px4","fromNode":"qgc","fromSide":"right","toNode":"px4","toSide":"bottom","label":"USB／无线数传 · MAVLink"},
+		{"id":"e-rc-px4","fromNode":"rc","fromSide":"right","toNode":"px4","toSide":"bottom","label":"遥控输入"},
+		{"id":"bb8d299f2656bac8","fromNode":"px4","fromSide":"right","toNode":"motor","toSide":"left","label":"电机控制"}
+	]
+}

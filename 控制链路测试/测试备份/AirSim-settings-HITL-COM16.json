@@ -1,0 +1,28 @@
+{
+    "SettingsVersion": 1.2,
+    "SimMode": "Multirotor",
+    "ClockType": "SteppableClock",
+    "Vehicles": {
+        "PX4": {
+            "VehicleType": "PX4Multirotor",
+            "UseSerial": true,
+            "SerialPort": "COM16",
+            "SerialBaudRate": 115200,
+            "UseTcp": false,
+            "LockStep": true,
+            "QgcHostIp": "127.0.0.1",
+            "QgcPort": 14550,
+            "ControlIp": "127.0.0.1",
+            "ControlPortLocal": 14540,
+            "ControlPortRemote": 14580,
+            "LocalHostIp": "127.0.0.1",
+            "Sensors": {
+                "Barometer": {
+                    "SensorType": 1,
+                    "Enabled": true,
+                    "PressureFactorSigma": 0.0001825
+                }
+            }
+        }
+    }
+}

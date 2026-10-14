@@ -1,0 +1,25 @@
+{
+	"nodes":[
+		{"id":"intro","type":"file","file":"27赛季无人机/控制链路测试/00-测试总览.md","x":330,"y":-400,"width":460,"height":310,"color":"1"},
+		{"id":"s2","type":"file","file":"27赛季无人机/控制链路测试/02-PX4与地面站.md","x":390,"y":0,"width":340,"height":330,"color":"2"},
+		{"id":"s3","type":"file","file":"27赛季无人机/控制链路测试/03-ELRS与MTF.md","x":1160,"y":0,"width":340,"height":330,"color":"3"},
+		{"id":"s4","type":"file","file":"27赛季无人机/控制链路测试/04-Lichee与MAVLink.md","x":1840,"y":0,"width":340,"height":330,"color":"4"},
+		{"id":"s1","type":"file","file":"27赛季无人机/控制链路测试/01-实物与供电核验.md","x":-360,"y":0,"width":340,"height":330,"color":"1"},
+		{"id":"gate","type":"text","text":"## 每阶段通关规则\n☐ 按笔记执行\n☐ 保存截图／日志／照片\n☐ 更新 status 属性\n☐ 失败则停在该阶段，记录复现\n\n**全程无桨。45A AIO：3–6S；电机额定电压另查。**","x":-370,"y":-400,"width":360,"height":250,"color":"1"},
+		{"id":"s5","type":"file","file":"27赛季无人机/控制链路测试/05-GC4653视觉链路.md","x":1840,"y":500,"width":340,"height":330,"color":"4"},
+		{"id":"s6","type":"file","file":"27赛季无人机/控制链路测试/06-无桨电机测试.md","x":1160,"y":500,"width":340,"height":330,"color":"6"},
+		{"id":"log","type":"file","file":"27赛季无人机/控制链路测试/测试记录/测试记录模板.md","x":-350,"y":500,"width":340,"height":330,"color":"2"},
+		{"id":"s7","type":"file","file":"27赛季无人机/控制链路测试/07-端到端联调.md","x":390,"y":500,"width":340,"height":330,"color":"5"},
+		{"id":"end","type":"text","text":"## 截至 2026-09-29\n✅ Nano→MAVLink→PX4 内部目标\n✅ QGC→PX4→ESC→四路电机\n⏳ Nano→PX4 SITL→模拟执行器\n❌ Nano→真实电机未测试\n\n不判定真实自主执行或飞行性能。","x":730,"y":1000,"width":520,"height":230,"color":"5"}
+	],
+	"edges":[
+		{"id":"e1","fromNode":"s1","fromSide":"right","toNode":"s2","toSide":"left","label":"供电与型号通过"},
+		{"id":"e2","fromNode":"s2","fromSide":"right","toNode":"s3","toSide":"left","label":"PX4/QGC 通过"},
+		{"id":"e3","fromNode":"s3","fromSide":"right","toNode":"s4","toSide":"left","label":"RC＋传感器通过"},
+		{"id":"e4","fromNode":"s4","fromSide":"bottom","toNode":"s5","toSide":"top","label":"双向通信通过"},
+		{"id":"e5","fromNode":"s5","fromSide":"left","toNode":"s6","toSide":"right","label":"视觉可用"},
+		{"id":"e6","fromNode":"s6","fromSide":"left","toNode":"s7","toSide":"right","label":"四路电机低速通过"},
+		{"id":"e7","fromNode":"s7","fromSide":"bottom","toNode":"end","toSide":"left","label":"归档验收"},
+		{"id":"e8","fromNode":"intro","fromSide":"bottom","toNode":"s2","toSide":"top"}
+	]
+}

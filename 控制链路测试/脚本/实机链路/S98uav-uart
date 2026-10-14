@@ -1,0 +1,50 @@
+#!/bin/sh
+
+DEVICE=/dev/ttyS1
+LOG_DIR=/root/uav/logs
+LOG_FILE=$LOG_DIR/uart-init.log
+
+start_uart()
+{
+    mkdir -p "$LOG_DIR"
+    echo "uart-init: start" >> "$LOG_FILE"
+
+    /usr/sbin/devmem 0x03001068 32 0x6
+    /usr/sbin/devmem 0x03001064 32 0x6
+
+    if [ ! -c "$DEVICE" ]; then
+        echo "uart-init: ERROR $DEVICE not found" >> "$LOG_FILE"
+        return 1
+    fi
+
+    /usr/bin/stty -F "$DEVICE" 115200 cs8 -parenb -cstopb \
+        cread clocal -crtscts raw -echo -ixon -ixoff
+
+    rx_mux=$(/usr/sbin/devmem 0x03001068 32)
+    tx_mux=$(/usr/sbin/devmem 0x03001064 32)
+
+    if [ "$rx_mux" = "0x00000006" ] && [ "$tx_mux" = "0x00000006" ]; then
+        echo "uart-init: OK PA18_RX=$rx_mux PA19_TX=$tx_mux 115200" >> "$LOG_FILE"
+        return 0
+    fi
+
+    echo "uart-init: ERROR PA18_RX=$rx_mux PA19_TX=$tx_mux" >> "$LOG_FILE"
+    return 1
+}
+
+case "$1" in
+    start)
+        start_uart
+        ;;
+    stop)
+        ;;
+    restart|reload)
+        start_uart
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac
+
+exit $?
