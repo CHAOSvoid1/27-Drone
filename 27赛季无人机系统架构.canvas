@@ -1,27 +1,28 @@
 {
 	"nodes":[
-		{"id":"lichee","type":"text","text":"## LicheeRV Nano（SG2002）\nNPU：轻量目标检测\nCPU：目标跟踪、避障判断、导航状态机\n输出：速度目标 vx/vy/vz、偏航角速度\n不承担姿态与电机闭环","x":310,"y":-375,"width":370,"height":220,"color":"4"},
-		{"id":"front_range","type":"text","text":"## TFS20-L 前向测距\n提供前方距离保险\n具体接入接口与数据融合方式待确认","x":-200,"y":-40,"width":310,"height":145,"color":"3"},
-		{"id":"modes","type":"text","text":"## 两种运行模式\nA. 飞控独立：手飞／定高／光流定点，用于调试\nB. 视觉自主：相机 → Lichee 决策 → PX4 Offboard\n前者验证稳定飞行后再启用后者","x":-200,"y":778,"width":430,"height":180,"color":"2"},
-		{"id":"checks","type":"text","text":"## 定型前检查\n① AIO 是否有可用 PX4 board target、至少两个完整 UART\n② GC4653 在 LicheeRV Nano BSP 中的驱动、设备树与 ISP 配置\n③ TFS20-L 接线、延迟和前向安全策略\n④ 光流无绝对位置，长期积分漂移需视觉特征校正","x":1220,"y":743,"width":690,"height":215,"color":"1"},
-		{"id":"camera","type":"text","text":"## 前视相机 GC4653\n建议原型目标：720P / 60 fps\n负责目标识别、跟踪与方向判断\n卷帘快门；高速复杂避障需实测","x":-200,"y":-375,"width":310,"height":190,"color":"3"},
-		{"id":"feedback","type":"text","text":"## 状态回传\nPX4 → LicheeRV Nano\n融合后姿态、局部位置、速度、高度、电池状态\n供导航决策使用","x":1480,"y":-375,"width":430,"height":170,"color":"4"},
-		{"id":"title","type":"text","text":"# 27赛季无人机系统框线图\n 架构草案，接口与器件兼容性需实测确认","x":560,"y":-600,"width":660,"height":120,"color":"1"},
-		{"id":"rc","type":"text","text":"## 遥控器／ELRS 接收机\n手动操控与接管；具体接口按飞控确认","x":-200,"y":560,"width":310,"height":120,"color":"2"},
-		{"id":"qgc","type":"text","text":"## Windows 电脑／QGroundControl\n刷写与配置 PX4、校准、查看传感器和日志\n调试 Stabilized → Altitude → Position\n配置 Offboard 失联保护","x":375,"y":768,"width":370,"height":190,"color":"2"},
-		{"id":"px4","type":"text","text":"## PX4 AIO 飞控\n板载 IMU＋EKF2：姿态、速度、高度估计\nOffboard：接收高层速度目标\n位置／速度／姿态／角速度闭环控制\n失联处理：退出 Offboard，按配置悬停或降落","x":745,"y":205,"width":430,"height":270,"color":"5"},
-		{"id":"flow","type":"text","text":"## MTF-02P 下视光流＋测距\n直接接飞控 UART；光流与对地高度\n不经 LicheeRV Nano 转发","x":-200,"y":260,"width":310,"height":160,"color":"3"},
-		{"id":"motor","type":"text","text":"## 4× 电机＋桨叶\n候选：1102 / 2S / 2 寸\n或 1204 / 3S / 40 mm\n按总重和推力实测定型","x":1610,"y":260,"width":300,"height":170,"color":"6"}
+		{"id":"lichee","type":"text","text":"## LicheeRV Nano｜任务调度\n空闲UART接机库（UART2候选）\nUART1↔AIO：MAVLink目标／状态\n自检、起飞、进近、接触、返航\nGPIO／锁存接口选择航行灯颜色","x":0,"y":0,"width":340,"height":180,"color":"4"},
+		{"id":"camera","type":"text","text":"## GC4653前视相机\n基地装甲识别\n场地特征与引导灯图像","x":-500,"y":20,"width":250,"height":140,"color":"3"},
+		{"id":"px4","type":"text","text":"## MicoAir H743 V2 AIO 35A\n飞控＋四合一电调，一体硬件\n状态估计、姿态闭环及四路驱动\n与机载平台双向交换目标和状态","x":600,"y":10,"width":310,"height":160,"color":"5"},
+		{"id":"rc","type":"text","text":"## 每机急停接收机\n独立接入各架AIO\n失联自动停桨","x":1100,"y":124,"width":245,"height":132,"color":"1"},
+		{"id":"motor","type":"text","text":"## 四路动力\n1304 5000KV\n2020四叶桨\n涵道桨为备选","x":1105,"y":-290,"width":240,"height":150,"color":"6"},
+		{"id":"flow","type":"text","text":"## MTF-02P\n下视光流＋对地测距\n直接有线接AIO","x":600,"y":-290,"width":310,"height":150,"color":"3"},
+		{"id":"dock_uart","type":"text","text":"## 库内触点｜3.3 V UART\nTX↔RX、RX↔TX、GND；","x":0,"y":-290,"width":340,"height":150,"color":"4"},
+		{"id":"hangar_cpu","type":"text","text":"## 机库与控制板\n卷帘顶盖、四个同构机位\n在位、电量、盖板与赛事状态\n下发阵营、任务和一次性出动授权","x":-500,"y":-290,"width":280,"height":150,"color":"4"},
+		{"id":"battery","type":"text","text":"## 3S 350 mAh级电池\n动力供电与低压稳压支路\n标称容量按4 Wh核算","x":40,"y":428,"width":260,"height":140,"color":"6"},
+		{"id":"acdff15632f62c08","type":"text","text":"## 官方要求的航行外观灯\n独立灯板＋直流限流／恒流驱动\n7颗规定红蓝灯珠、顶面圆形布局\nNano选阵营色，离库后保持\nGPIO仅控制，灯电流由驱动承担","x":613,"y":388,"width":285,"height":180,"color":"6"},
+		{"id":"estop_tx","type":"text","text":"## 指定急停遥控器\n同一只遥控器覆盖全部无人机\n仅紧急停桨","x":1100,"y":426,"width":245,"height":142,"color":"1"}
 	],
 	"edges":[
-		{"id":"e-camera-lichee","fromNode":"camera","fromSide":"right","toNode":"lichee","toSide":"left","label":"MIPI CSI"},
-		{"id":"e-front-lichee","fromNode":"front_range","fromSide":"right","toNode":"lichee","toSide":"bottom","label":"前向距离；接口待确认"},
-		{"id":"e-lichee-px4","fromNode":"lichee","fromSide":"right","toNode":"px4","toSide":"top","label":"MAVLink / UART · 速度目标"},
-		{"id":"e-flow-px4","fromNode":"flow","fromSide":"right","toNode":"px4","toSide":"left","label":"UART · 光流＋测距"},
-		{"id":"e-px4-feedback","fromNode":"px4","fromSide":"top","toNode":"feedback","toSide":"bottom","label":"融合状态"},
-		{"id":"e-feedback-lichee","fromNode":"feedback","fromSide":"left","toNode":"lichee","toSide":"right","label":"同一 MAVLink 链路"},
-		{"id":"e-qgc-px4","fromNode":"qgc","fromSide":"right","toNode":"px4","toSide":"bottom","label":"USB／无线数传 · MAVLink"},
-		{"id":"e-rc-px4","fromNode":"rc","fromSide":"right","toNode":"px4","toSide":"bottom","label":"遥控输入"},
-		{"id":"bb8d299f2656bac8","fromNode":"px4","fromSide":"right","toNode":"motor","toSide":"left","label":"电机控制"}
+		{"id":"dock-data","fromNode":"dock_uart","fromSide":"bottom","toNode":"lichee","toSide":"top","fromEnd":"arrow","color":"4","label":"短距触点UART／任务帧"},
+		{"id":"camera-data","fromNode":"camera","fromSide":"right","toNode":"lichee","toSide":"left","color":"4","label":"MIPI CSI"},
+		{"id":"cpu-aio","fromNode":"lichee","fromSide":"right","toNode":"px4","toSide":"left","fromEnd":"arrow","color":"4","label":"UART1／MAVLink"},
+		{"id":"aio-motor","fromNode":"px4","fromSide":"right","toNode":"motor","toSide":"left","color":"4","label":"AIO直接驱动四电机"},
+		{"id":"flow-aio","fromNode":"flow","fromSide":"bottom","toNode":"px4","toSide":"top","color":"4","label":"UART：光流／测距"},
+		{"id":"tx-rx","fromNode":"estop_tx","fromSide":"top","toNode":"rc","toSide":"bottom","color":"1","label":"同一安全链路×N"},
+		{"id":"power-aio","fromNode":"battery","fromSide":"top","toNode":"px4","toSide":"bottom","color":"6","label":"主电源"},
+		{"id":"power-cpu","fromNode":"battery","fromSide":"top","toNode":"lichee","toSide":"bottom","color":"6","label":"稳压支路"},
+		{"id":"hangar-dock","fromNode":"hangar_cpu","fromSide":"right","toNode":"dock_uart","toSide":"left","fromEnd":"arrow","color":"4","label":"控制板UART"},
+		{"id":"light-power","fromNode":"px4","fromSide":"bottom","toNode":"acdff15632f62c08","toSide":"top","color":"6","label":"供电/换色"},
+		{"id":"rx-aio","fromNode":"rc","fromSide":"left","toNode":"px4","toSide":"right","color":"1","label":"独立停桨输入"}
 	]
 }
