@@ -1,0 +1,30 @@
+{
+  "file": "E:\\\u6e58\u5927\\RM\\\u9010\u66e6\\\u8fdb\u5ea6\u6c47\u62a5\\RM\\outputs\\clock_test\\samples_20261127_230809.csv",
+  "total_samples": 1444,
+  "duration_s": 300.05359055,
+  "median_rtt_ms": 15.151150000000001,
+  "all_samples": {
+    "samples": 1444,
+    "span_s": 300.05359055,
+    "ppm": 1047.4690202204047,
+    "drift_ms_per_100s": 104.74690202204046,
+    "residual_rms_ms": 3.6817681222474965
+  },
+  "low_rtt": {
+    "samples": 722,
+    "span_s": 298.58142069999997,
+    "ppm": 1048.5824328938418,
+    "drift_ms_per_100s": 104.85824328938418,
+    "residual_rms_ms": 2.255304906593112
+  },
+  "segments": [
+    {
+      "start_s": 0,
+      "samples": 722,
+      "span_s": 298.58142069999997,
+      "ppm": 1048.5824328938418,
+      "drift_ms_per_100s": 104.85824328938418,
+      "residual_rms_ms": 2.255304906593112
+    }
+  ]
+}
